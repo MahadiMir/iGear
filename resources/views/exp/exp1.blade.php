@@ -55,6 +55,8 @@
                                     <th>Name </th>
                                     <th>Age</th>
                                     <th>Address</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -65,6 +67,15 @@
                                     <td>{{$exp->name}}</td>
                                     <td>{{$exp->age}}</td>
                                     <td>{{$exp->address}}</td>
+                                    <td width="10%"><a href="{{route('exp.edit', $exp->id )}}" class="btn btn-dark btn-block"><i class="mdi mdi-pencil"></i></a></td>
+                                    <td>
+                                        <form class="insert-form" id="insert-form" method="post" action="{{route('exp.destroy', $exp->id)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button name="submit" class="btn btn-danger btn-block" id="submit"><i class="mdi mdi-trash-can"></i></button>
+                                        </form>
+                                    </td>
+
                                 </tr>
                                 @endforeach
                                 </tbody>

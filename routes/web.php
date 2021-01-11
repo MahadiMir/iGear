@@ -54,6 +54,7 @@ Route::get('assignments-create', 'AssignmentController@create')->name('assignmen
 Route::resource('frontend', 'FrontController');
 
 Route::resource('exp', 'ExpController');
+Route::get('/exp-expupdate', 'ExpController@expupdate')->name('exp.expupdate');
 
 //mail
 Route::get('/sendmail', function(Request $request){

@@ -67,7 +67,8 @@ class ExpController extends Controller
      */
     public function edit($id)
     {
-        //
+        $exp = Exp::find($id);
+        return view('exp.edit',compact('exp'));
     }
 
     /**
@@ -79,7 +80,26 @@ class ExpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $exp = Exp::find($id);
+//        $exp->update([
+//            'name' => $request->name,
+//            'age' => $request->age,
+//            'address' => $request->address,
+//        ]);
+//        $exps = Exp::all();
+//        return view('exp.exp1',compact('exps'));
+       return $id;
+    }
+    public function expupdate(Request $request){
+        $id = $request->id;
+        $exp = Exp::find($id);
+        $exp->update([
+            'name' => $request->name,
+            'age' => $request->age,
+            'address' => $request->address,
+        ]);
+        $exps = Exp::all();
+        return view('exp.exp1',compact('exps'));
     }
 
     /**
@@ -90,6 +110,7 @@ class ExpController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Exp::find($id)->delete();
+        return redirect()->back();
     }
 }
